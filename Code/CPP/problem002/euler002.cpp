@@ -1,13 +1,11 @@
 #include <iostream>
-#include <memory>
 #include "Fibonacci.h"
 
 const unsigned long int trialSize = 4000000L;
 
 int main(int argc, char * argv[])
 {
-  std::unique_ptr<Fibonacci> fibo(new Fibonacci(1L));
-  Fibonacci fibonacci = *(fibo.get());
+  Fibonacci fibonacci(1L);
 
   unsigned int index = 0;
   unsigned long int val = fibonacci[index];
