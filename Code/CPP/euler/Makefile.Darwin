@@ -1,0 +1,34 @@
+# GIT_VERSION = $(shell sh -c 'git describe --abbrev=4 --dirty --always')
+
+# Use one of these two lines, but not both
+# CPPFLAGS += -g -fno-inline -O0  # debugging & no optimization
+CPPFLAGS  = -O3                 # all warning-free optimizations
+
+CPPFLAGS += -Werror -Wall -fPIC 
+# CPPFLAGS += -DGIT_VERSION=\"$(GIT_VERSION)\"
+CPPFLAGS += -std=c++0x -stdlib=libc++
+
+COMPILE_OPTIONS += 
+INCLUDE += 
+
+LDFLAGS += -stdlib=libc++
+LDFLAGS += -shared
+
+CXX = c++
+OBJS = $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+SRC = $(wildcard *.cpp),$(wildcard *.h)
+TARGET=libeuler.so
+
+$(TARGET): $(OBJS)
+	$(CXX) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LDLIBS)
+	mv $(TARGET) ../lib;
+
+$(OBJS): %.o: %.cpp %.h
+	@if test -d ../lib; then echo LibOk >& /dev/null; else mkdir -p ../lib; fi
+	$(CXX) $(CPPFLAGS) $(INCLUDE) $(COMPILE_OPTIONS) -c $< -o $@
+
+clean:
+	rm -f *.o; 
+	rm -f ../lib/$(TARGET)
+
+
