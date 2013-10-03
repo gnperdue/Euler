@@ -4,3 +4,4 @@ Code/CPP/bin
 Code/CPP/lib
 
 Code/Erlang/*/*.beam
+Code/Erlang/*/.*.swp
