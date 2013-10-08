@@ -1,30 +1,26 @@
-TARGET=euler001
 
 EULERLIBDIR=$(shell sh -c 'cd ../lib; pwd')
 EULERINCDIR=$(shell sh -c 'cd ../euler; pwd')
 
-CPPFLAGS  = -O0 -Wall
-CPPFLAGS += -Werror
-CPPFLAGS += -g -fPIC
+CPPFLAGS  = -O3 -Wall -Werror -fPIC
 CPPFLAGS += -std=c++0x -stdlib=libc++
 LDFLAGS   = -stdlib=libc++
 LDLIBS    = -L$(EULERLIBDIR) -leuler
 INCLUDE   = -I$(EULERINCDIR)
 CXX = c++
 
-OBJS=$(TARGET).o
+all: euler001a euler001b euler001c mover
 
-$(TARGET): $(OBJS)
-	@if test -d ../bin; then echo BinOk >& /dev/null ; else mkdir -p ../bin; fi
-	$(CXX) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LDLIBS)
-	mv $(TARGET) ../bin;
-
-$(OBJS): $(TARGET).cpp
-	$(CXX) $(CPPFLAGS) $(INCLUDE) $(COMPILE_OPTIONS) -c $< -o $@
+mover:
+	mv euler001a ../bin
+	mv euler001b ../bin
+	mv euler001c ../bin
 
 clean:
 	rm -rf *.dSYM/
 	rm -f *.o
-	rm -f ../bin/$(TARGET)
+	rm -f ../bin/euler001a
+	rm -f ../bin/euler001b
+	rm -f ../bin/euler001c
 
 
