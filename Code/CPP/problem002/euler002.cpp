@@ -17,7 +17,7 @@ int main(int argc, char * argv[])
 
   std::vector<unsigned long int> vals;
   unsigned long int sum = 0L;
-  for (unsigned int i = 0; i < fibonacci.size(); ++i) {
+  for (auto i = 0; i < fibonacci.size(); ++i) {
     unsigned long int val = fibonacci[i];
     if ( (0 == val % 2) && (val < trialSize) ) {
       vals.push_back( val );

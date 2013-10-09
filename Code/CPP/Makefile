@@ -15,3 +15,6 @@ clean:
 	make clean -C problem004
 	make clean -C problem014
 
+remake:
+	make clean
+	make all
