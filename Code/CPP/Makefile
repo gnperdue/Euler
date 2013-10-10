@@ -5,6 +5,7 @@ all:
 	make -C problem002
 	make -C problem003
 	make -C problem004
+	make -C problem005
 	make -C problem014
 
 clean:
@@ -13,6 +14,7 @@ clean:
 	make clean -C problem002
 	make clean -C problem003
 	make clean -C problem004
+	make clean -C problem005
 	make clean -C problem014
 
 remake:
