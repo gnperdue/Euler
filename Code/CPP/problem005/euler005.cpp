@@ -6,8 +6,7 @@ bool evenDivisByAll(int num, const std::vector<int> &divs);
 int main(int argc, char * argv[])
 {
   int evenlyDivisible{1};
-  std::vector<int> xs;
-  for (int i=1; i<=20; ++i) xs.push_back(i);
+  std::vector<int> xs{7,11,12,13,14,15,16,17,18,19,20};
 
   for (;;) {
     if (evenDivisByAll(evenlyDivisible,xs)) {
