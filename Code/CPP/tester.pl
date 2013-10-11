@@ -2,7 +2,7 @@
 
 use Modern::Perl '2013';
 use autodie;
-use Env qw{ HOME PATH DYLD_LIBRARY_PATH LD_LIBRARY_PATH };
+use Env qw{ HOME };
 
 if ($#ARGV + 1 < 1 ) {
   print " USAGE:\n";
@@ -13,19 +13,6 @@ if ($#ARGV + 1 < 1 ) {
 my $numtrials = 20;
 my $arch = `uname`;
 chomp($arch);
-
-my @paths = split(/:/,$PATH);
-my @lds;
-my @dylds;
-if (length($LD_LIBRARY_PATH // '')) {
-  @lds = split(/:/,$LD_LIBRARY_PATH);
-  print @lds."\n";
-}
-if (length($DYLD_LIBRARY_PATH // '')) {
-  @dylds = split(/:/,$DYLD_LIBRARY_PATH);
-  print @dylds."\n";
-}
-
 
 my $ex = $ARGV[0];
 my $lf = $ex . "_log.txt";
