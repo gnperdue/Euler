@@ -8,9 +8,10 @@ int main(int argc, char * argv[])
   using std::endl;
 
 	unsigned long maxfacts = 500L;
+  unsigned long currentMax = 0L;
 
   TriangularNumber triangleCalc;
-	unsigned long index = 2000000L;
+	unsigned long index = 1L;
   triangleCalc.set(index);
 	std::vector<unsigned long> facts = triangleCalc.factors();
 	unsigned long nfacts = facts.size();
@@ -19,12 +20,17 @@ int main(int argc, char * argv[])
 		triangleCalc.set(++index);
 		facts = triangleCalc.factors();
 		nfacts = facts.size();
-	}
-	cout << "The first trianglar number with more than " << maxfacts 
-		<< " factors is " << triangleCalc.get() << endl;
-	cout << "  The factors are: " << endl;
-	for (auto x : facts) cout << " " << x;
-	cout << endl;
+    if (nfacts > currentMax) {
+      currentMax = nfacts;
+      cout << "The first trianglar number with more than " << currentMax 
+        << " factors is " << triangleCalc.get() << endl;
+    }
+  }
+  cout << "The first trianglar number with more than " << maxfacts 
+    << " factors is " << triangleCalc.get() << endl;
+  cout << "  The factors are: " << endl;
+  for (auto x : facts) cout << " " << x;
+  cout << endl;
 
   return 0;
 }
