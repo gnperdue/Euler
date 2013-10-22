@@ -6,3 +6,7 @@ Code/CPP/reports
 
 Code/Erlang/*/*.beam
 Code/Erlang/*/.*.swp
+
+Code/C/bin
+
+*.dSYM
