@@ -4,6 +4,7 @@
 
 int GetDigitSqSum(int n);
 int GetNumberTerminatingAt89(int min_search_point, int max_search_point);
+void GetSearchMax(int rank, int comm_size, int* search_max);
 
 int main(void)
 {
@@ -15,7 +16,8 @@ int main(void)
 
   int n89         = 0;   /* total number of number chains terminating with 89 */
   int search_min  = 0;
-  int search_max  = 1e7;
+  int search_max  = 0;
+  GetSearchMax(my_rank, comm_sz, &search_max);
   int n_searchers = comm_sz;
   int search_bin  = search_max / n_searchers;
 
@@ -40,6 +42,17 @@ int main(void)
 
   MPI_Finalize();
   return 0;
+}
+
+void GetSearchMax(int rank, int comm_size, int* search_max)
+{
+  int sourceproc = 0;
+  int count = 1;
+  if (0 == rank) {
+    printf("Enter the upper search bound (int, not error checked):\n");
+    scanf("%d", search_max);
+  }
+  MPI_Bcast(search_max, count, MPI_INT, sourceproc, MPI_COMM_WORLD);
 }
 
 int GetDigitSqSum(int n)
