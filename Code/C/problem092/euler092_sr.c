@@ -15,8 +15,7 @@ int main(void)
 
   int n89         = 0;   /* total number of number chains terminating with 89 */
   int search_min  = 0;
-  /* int search_max  = 1e7; */
-  int search_max  = 100;
+  int search_max  = 1e7;
   int n_searchers = comm_sz;
   int search_bin  = search_max / n_searchers;
 
