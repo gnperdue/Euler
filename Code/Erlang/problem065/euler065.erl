@@ -6,10 +6,60 @@
     ,cont_frac/2
     ,cont_denom/3
     ,cont_frac_l/2
+    ,cont_frac_e/1
+    ,cont_frac_e/2
   ]
 ).
 
 eval_frac({Numer,Denom}) -> Numer / Denom.
+
+%% @doc Compute a continuted fraction for N convergences of e.
+cont_frac_e(Nconvergents) ->
+  cont_frac_e(Nconvergents, {2,[1,0,1]}).
+cont_frac_e(Nconvergents, {Start,DenomList}) ->
+  CyclePos = 1,
+  io:format("~w + ~n",[Start]),
+  frac_add(
+    {Start,1}, 
+    cont_denom_e(1, Nconvergents, {1,DenomList,CyclePos})
+  ).
+
+%% @doc Compute the numerator-array continued fractioin recursively.
+%% Modify the denominator list for each iteration as per the e pattern.
+cont_denom_e(Iter, Nconvergents, {Numer, DenomList,CyclePos}) ->
+  io:format("Iter = ~w, CyclePos = ~w~n", [Iter, CyclePos]),
+  Nitems = length(DenomList),
+  if
+    CyclePos >  Nitems -> 
+      Index = CyclePos - Nitems;
+    CyclePos =< Nitems -> 
+      Index = CyclePos
+  end,
+  [Lead, Middle, Last] = DenomList,  
+  io:format("Lead = ~w, Middle = ~w, Last = ~w~n",[Lead,Middle,Last]),
+  io:format("   Index = ~w~n", [Index]),
+  if 
+    Index == 1 -> NewDenomList = DenomList;
+    Index == 2 -> NewDenomList = [Lead, 2 + Middle, Last];
+    Index == 3 -> NewDenomList = DenomList
+  end,
+  io:format(" New Denom List = ~p~n", [NewDenomList]),
+  Denom = lists:nth(Index,NewDenomList),
+  io:format(" Denom = ~w~n",[Denom]),
+  if 
+    Iter >= Nconvergents -> 
+      io:format(" ~w/~w~n",[Numer,Denom]),
+      frac_div({Numer,1},{Denom,1});
+    Iter <  Nconvergents -> 
+      io:format("~w / ~w + ~n",[Numer,Denom]),
+      frac_div(
+        {Numer,1},
+        frac_add(
+          {Denom,1}, 
+          cont_denom_e(Iter+1, Nconvergents, {Numer, NewDenomList, Index+1})
+        )
+      )
+  end.
 
 %% @doc Compute a continuted fraction for N convergences with an
 %% array-numerator and report the answer as a fraction.
@@ -23,7 +73,7 @@ cont_frac_l(Nconvergents, {Start,DenomList}) ->
 
 %% @doc Compute the numerator-array continued fractioin recursively.
 cont_denom_l(Iter, Nconvergents, {Numer, DenomList,CyclePos}) ->
-  % io:format("Iter = ~w, CyclePos = ~w~n", [Iter, CyclePos]),
+  io:format("Iter = ~w, CyclePos = ~w~n", [Iter, CyclePos]),
   Nitems = length(DenomList),
   if
     CyclePos >  Nitems -> 
@@ -31,7 +81,7 @@ cont_denom_l(Iter, Nconvergents, {Numer, DenomList,CyclePos}) ->
     CyclePos =< Nitems -> 
       Index = CyclePos
   end,
-  % io:format("   Index = ~w~n", [Index]),
+  io:format("   Index = ~w~n", [Index]),
   Denom  = lists:nth(Index,DenomList),
   if 
     Iter >= Nconvergents -> 
