@@ -27,11 +27,9 @@ cont_denom_l(Iter, Nconvergents, {Numer, DenomList,CyclePos}) ->
   Nitems = length(DenomList),
   if
     CyclePos >  Nitems -> 
-      Index = CyclePos - Nitems,
-      Cycle = CyclePos - Nitems;
+      Index = CyclePos - Nitems;
     CyclePos =< Nitems -> 
-      Index = CyclePos,
-      Cycle = CyclePos
+      Index = CyclePos
   end,
   % io:format("   Index = ~w~n", [Index]),
   Denom  = lists:nth(Index,DenomList),
@@ -45,7 +43,7 @@ cont_denom_l(Iter, Nconvergents, {Numer, DenomList,CyclePos}) ->
         {Numer,1},
         frac_add(
           {Denom,1}, 
-          cont_denom_l(Iter+1, Nconvergents, {Numer, DenomList, Cycle+1})
+          cont_denom_l(Iter+1, Nconvergents, {Numer, DenomList, Index+1})
         )
       )
   end.
