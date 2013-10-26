@@ -8,15 +8,23 @@
     ,cont_frac_l/2
     ,cont_frac_e/1
     ,cont_frac_e/2
-    ,euler/0
+    ,euler/1
+    ,digit_sum/1
   ]
 ).
 
-euler() -> 
-  {N,_D} = cont_frac_e(100),
-  N.
+euler() -> euler(99). % My "first" term is start + the first fraction.
+euler(X) -> 
+  {N,_D} = cont_frac_e(X),
+  digit_sum(N).
 
-eval_frac({Numer,Denom}) -> Numer / Denom.
+digit_sum(N) ->
+  digit_sum(N,[]).
+digit_sum(0,List) -> lists:foldl(fun(X,Sum) -> X + Sum end, 0, List);
+digit_sum(N,List) ->
+  X = N rem 10,
+  Y = (N - X) div 10,
+  digit_sum(Y,[X | List]).
 
 %% @doc Compute a continuted fraction for N convergences of e.
 cont_frac_e(Nconvergents) ->
@@ -116,6 +124,8 @@ cont_denom(Iter, Nconvergents, {Numer, Denom}) ->
       )
   end.
 
+%% @doc Turn a whole fraction into a floating point number.
+eval_frac({Numer,Denom}) -> Numer / Denom.
 
 %% @doc Do ``fractional addition'' where the tuple  {A,B} represents
 %% the {numerator, denominator}:  A/B + C/D = (A*D + C*B)/(B*D)
