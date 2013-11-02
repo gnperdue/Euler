@@ -1,14 +1,14 @@
 -module(euler035).
 -export([
-    permute/1
-    ,ndigits/1
-    ,list_of_cyclic_perms/1
-    ,is_prime/1
-    ,is_perm_prime/1
-    ,is_perm_prime_fmap/1
-    ,euler/1
+  permute/1
+  ,ndigits/1
+  ,list_of_cyclic_perms/1
+  ,is_prime/1
+  ,is_perm_prime/1
+  ,is_perm_prime_fmap/1
+  ,euler/1
   ]
-).
+       ).
 
 euler(N) ->
   List = [Value || Value <- lists:seq(3,N), Value rem 2 /= 0],
