@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Project Euler Problem 1</title>
+    <script type="text/javascript" charset="utf-8">
+      function euler001() {
+        var sum = 0;
+        for (var i = 3; i < 1001; i ++) {
+          if ( (i % 3 == 0) || (i % 5 == 0) ) {
+            sum += i;
+          }
+        }
+        var answer = document.getElementById("euleranswer");
+        answer.innerHTML = sum;
+      }
+      window.onload = euler001;
+    </script>
+  </head>
+  <body>
+    <p>This is problem 1. The answer is: </p>
+    <p id="euleranswer"></p>
+  </body>
+</html>
