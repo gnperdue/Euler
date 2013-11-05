@@ -17,7 +17,7 @@ euler092_reduce: euler092_reduce.c
 	mv euler092_reduce ../bin
 
 euler092_pthr: euler092_pthr.c
-	$(CC) $(CFLAGS) $(COMPILE_OPTIONS) -o euler092_pthr euler092_pthr.c 
+	clang $(CFLAGS) $(COMPILE_OPTIONS) -o euler092_pthr euler092_pthr.c 
 	mv euler092_pthr ../bin
 
 clean:
