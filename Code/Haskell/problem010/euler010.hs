@@ -1,15 +1,9 @@
-main = print $ euler10 2000000
 
 euler10 :: Integer -> Integer
-euler10 n = sum $ listOfPrimesLessThan n
+euler10 n = sum $ seive [] [2..n]
 
-listOfPrimesLessThan :: (Integral a) => a -> [a]
-listOfPrimesLessThan n = takeWhile(<=n) [x | x<-2:[3,5..], isPrime x]
+seive :: [Integer] -> [Integer] -> [Integer]
+seive acl [] = reverse acl
+seive acl (p:rest) = seive (p:acl) (filter ((/= 0) . (`mod` p)) rest)
 
-isPrime :: Integral a => a -> Bool
-isPrime n = (n > 1) && calcIsPrime n (n-1)
-
-calcIsPrime :: (Integral a) => a -> a -> Bool
-calcIsPrime n 1 = True
-calcIsPrime n m = (n `mod` m) /= 0 && calcIsPrime n (m-1)
-
+main = print $ euler10 2000000
