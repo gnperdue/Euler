@@ -7,6 +7,7 @@
 
 void usage(const char* prog_name);
 int is_prime(unsigned long num);
+void prime_sum(unsigned long max_num, unsigned long *global_sum);
 
 int main(int argc, const char *argv[])
 {
@@ -21,38 +22,76 @@ int main(int argc, const char *argv[])
   printf("OpenMP is not available. Thread count is 1!\n");
 #endif
 
-  unsigned long counter = 3L;
-  unsigned long sum = 2L;
+	unsigned long sum = 0L;
 
 #pragma omp parallel num_threads(thread_count)
-  for (counter = 3L; counter < the_number; counter+=2) {
-    if (1L == is_prime(counter)) {
-#pragma omp critical
-      sum += counter;
-    }
-    counter = counter + 2L;
-  }
+	prime_sum(the_number, &sum);
+
   printf(" The sum of the primes is: %ld\n", sum);
 
   return 0;
 }
 
+void prime_sum(unsigned long max_num, unsigned long *global_sum)
+{
+#ifdef _OPENMP
+	int my_rank = omp_get_thread_num();
+	int thread_count = omp_get_num_threads();
+#else
+	int my_rank = 0;
+	int thread_count = 1;
+#endif
+
+  unsigned long section_size = max_num / thread_count;
+  unsigned long edge_piece = max_num - section_size*thread_count;
+	if (0 != edge_piece) {
+		fprintf(stderr, "The max number must be evenly divisible by the number of threads.\n");
+		exit(0);
+	}
+
+	unsigned long local_min = section_size * my_rank;
+	unsigned long local_max = local_min + section_size;
+
+	unsigned long counter = local_min;
+	unsigned long sum = 0L;
+	if (counter <= 2) {
+		sum = 2L;
+		counter = 3L;
+	}
+	else {
+		if (0 == counter % 2) counter++;
+	}
+
+  while (counter <= local_max) {
+		if (1L == is_prime(counter)) {
+			sum += counter;
+		}
+		counter = counter + 2L;
+	}
+	printf("The local sum in thread %d of %d is = %ld.\n", 
+			my_rank, thread_count, sum);
+
+#pragma omp critical
+	*global_sum += sum;	
+}
+
+
 int is_prime(unsigned long num)
 {
-  if (num <  2L) return 0;
-  if (num == 2L) return 1;
-  if (num == 3L) return 1;
-  unsigned long divisor = num - 1L;
-  while (divisor > 1L) {
-    if (num % divisor == 0) return 0;
-    divisor--;
-  }	
-  return 1;
+	if (num <  2L) return 0;
+	if (num == 2L) return 1;
+	if (num == 3L) return 1;
+	unsigned long divisor = num - 1L;
+	while (divisor > 1L) {
+		if (num % divisor == 0) return 0;
+		divisor--;
+	}	
+	return 1;
 }
 
 void usage(const char* prog_name)
 {
-  printf("Usage: %s nthreads \n", prog_name);
-  exit(0);
+	printf("Usage: %s nthreads \n", prog_name);
+	exit(0);
 }
 
