@@ -26,7 +26,8 @@ int main(int argc, const char *argv[])
      in parallel for loops. */
 	long counter = 3L;
 	long sum = 2L;
-#pragma omp parallel for num_threads(thread_count) reduction(+: sum)
+#pragma omp parallel for num_threads(thread_count) \
+	default(none) reduction(+: sum) shared(the_number)
 	for (counter = 3L; counter < the_number; counter += 2) {
 		if (1L == is_prime(counter)) {
 			sum += counter;
