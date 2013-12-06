@@ -3,7 +3,7 @@ CFLAGS= -g  -O0 -fno-inline -Wall
 COMPILE_OPTIONS=-DDEBUG
 
 all: prepwork euler010 euler010_pthr euler010_openmp1 euler010_openmp_parfor \
-	euler010_openmp_reduct1
+	euler010_openmp_reduct1 euler010_openmp_parfor_static euler010_openmp_parfor_guided
 
 prepwork:
 	@if test -d ../bin; then echo BinOk >& /dev/null ; else mkdir -p ../bin; fi
@@ -24,6 +24,15 @@ euler010_openmp_parfor: euler010_openmp_parfor.c
 	gcc-4.2 $(CFLAGS) -fopenmp $(COMPILE_OPTIONS) -o euler010_openmp_parfor euler010_openmp_parfor.c 
 	mv euler010_openmp_parfor ../bin
 
+euler010_openmp_parfor_static: euler010_openmp_parfor_static.c
+	gcc-4.2 $(CFLAGS) -fopenmp $(COMPILE_OPTIONS) -o euler010_openmp_parfor_static euler010_openmp_parfor_static.c 
+	mv euler010_openmp_parfor_static ../bin
+
+euler010_openmp_parfor_guided: euler010_openmp_parfor_guided.c
+	gcc-4.2 $(CFLAGS) -fopenmp $(COMPILE_OPTIONS) -o euler010_openmp_parfor_guided euler010_openmp_parfor_guided.c 
+	mv euler010_openmp_parfor_guided ../bin
+
+
 euler010_openmp_reduct1: euler010_openmp_reduct1.c
 	gcc-4.2 $(CFLAGS) -fopenmp $(COMPILE_OPTIONS) -o euler010_openmp_reduct1 euler010_openmp_reduct1.c 
 	mv euler010_openmp_reduct1 ../bin
@@ -35,6 +44,8 @@ clean:
 	rm -f ../bin/euler010_pthr
 	rm -f ../bin/euler010_openmp1
 	rm -f ../bin/euler010_openmp_parfor
+	rm -f ../bin/euler010_openmp_parfor_static
+	rm -f ../bin/euler010_openmp_parfor_guided
 	rm -f ../bin/euler010_openmp_reduct1
 
 remake:
