@@ -4,6 +4,7 @@ CC=icc
 CFLAGS=-vec-report=3 -O3 -Wall
 COMPILE_OPTIONS=-DDEBUG
 
+# Don't build euler010_pthread - can't find the header or OSX functions are not compatible here.
 all: prepwork euler010 euler010_openmp1 euler010_openmp_parfor \
 	euler010_openmp_reduct1 euler010_openmp_parfor_static euler010_openmp_parfor_guided
 
