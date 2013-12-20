@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <sys/time.h>
 #ifdef _OPENMP
 #include <omp.h>
 #endif
@@ -21,13 +22,24 @@ int main(int argc, const char *argv[])
 #else
   printf("OpenMP is not available. Thread count is 1!\n");
 #endif
+	printf("The number number of threads is: %d\n", thread_count);
+
+	struct timeval start_time, stop_time;
+	gettimeofday(&start_time, NULL);
 
 	unsigned long sum = 0L;
 
 #pragma omp parallel num_threads(thread_count)
 	prime_sum(the_number, &sum);
 
-  printf(" The sum of the primes is: %ld\n", sum);
+	gettimeofday(&stop_time,NULL);
+	printf(" The sum of the primes is: %ld\n", sum);
+	unsigned long long start_us = ((unsigned long long)(start_time.tv_sec))*1000000 +
+		(unsigned long long)(start_time.tv_usec);
+	unsigned long long stop_us  = ((unsigned long long)(stop_time.tv_sec))*1000000 +
+		(unsigned long long)(stop_time.tv_usec);
+	unsigned long long tdiff_us = stop_us - start_us;
+	printf("  Elapsed time = %llu usec\n", tdiff_us);
 
   return 0;
 }

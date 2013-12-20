@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <sys/time.h>
 
 int is_prime(unsigned long num);
 
@@ -12,6 +13,9 @@ int main(int argc, const char *argv[])
 	}
 	printf("The number is: %ld\n", the_number);
 
+	struct timeval start_time, stop_time;
+	gettimeofday(&start_time, NULL);
+
 	unsigned long counter = 3L;
 	unsigned long sum = 2L;
 
@@ -21,7 +25,15 @@ int main(int argc, const char *argv[])
 		}
 		counter = counter + 2L;
 	}
+
+	gettimeofday(&stop_time,NULL);
 	printf(" The sum of the primes is: %ld\n", sum);
+	unsigned long long start_us = ((unsigned long long)(start_time.tv_sec))*1000000 +
+		(unsigned long long)(start_time.tv_usec);
+	unsigned long long stop_us  = ((unsigned long long)(stop_time.tv_sec))*1000000 +
+		(unsigned long long)(stop_time.tv_usec);
+	unsigned long long tdiff_us = stop_us - start_us;
+	printf("  Elapsed time = %llu usec\n", tdiff_us);
 
 	return 0;
 }

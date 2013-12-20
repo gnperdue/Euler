@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <pthread.h>
+#include <sys/time.h>
 
 const unsigned int MAX_THREADS = 10;
 
@@ -29,6 +30,10 @@ int main(int argc, const char *argv[])
 
   thread_count = (unsigned int)atoi(argv[1]);
   if (thread_count == 0 || thread_count > MAX_THREADS) usage(argv[0]);
+	printf("The number number of threads is: %d\n", thread_count);
+
+	struct timeval start_time, stop_time;
+	gettimeofday(&start_time, NULL);
 
   /* create space for the threads */
   pthread_t* thread_handles;
@@ -68,7 +73,15 @@ int main(int argc, const char *argv[])
 #endif
     sum += ranges[thread].sum;
   }
-  printf(" The sum of the primes is: %ld\n", sum);
+
+	gettimeofday(&stop_time,NULL);
+	printf(" The sum of the primes is: %ld\n", sum);
+	unsigned long long start_us = ((unsigned long long)(start_time.tv_sec))*1000000 +
+		(unsigned long long)(start_time.tv_usec);
+	unsigned long long stop_us  = ((unsigned long long)(stop_time.tv_sec))*1000000 +
+		(unsigned long long)(stop_time.tv_usec);
+	unsigned long long tdiff_us = stop_us - start_us;
+	printf("  Elapsed time = %llu usec\n", tdiff_us);
 
   free(sums);
   free(thread_handles);
