@@ -6,4 +6,7 @@ all:
 clean:
 	make clean -f Makefile.$(ARCH)
 
+remake:
+	make clean
+	make all
 
