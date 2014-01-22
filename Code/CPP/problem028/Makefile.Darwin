@@ -1,0 +1,30 @@
+TARGET=euler028
+
+EULERLIBDIR=$(shell sh -c 'cd ../lib; pwd')
+EULERINCDIR=$(shell sh -c 'cd ../euler; pwd')
+
+CPPFLAGS  = -O0 -Wall
+CPPFLAGS += -Werror
+CPPFLAGS += -g -fPIC
+CPPFLAGS += -std=c++0x -stdlib=libc++
+LDFLAGS   = -stdlib=libc++
+LDLIBS    = -L$(EULERLIBDIR) -leuler
+INCLUDE   = -I$(EULERINCDIR)
+CXX = c++
+
+OBJS=$(TARGET).o
+
+$(TARGET): $(OBJS)
+	@if test -d ../bin; then echo BinOk >& /dev/null ; else mkdir -p ../bin; fi
+	$(CXX) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LDLIBS)
+	mv $(TARGET) ../bin;
+
+$(OBJS): $(TARGET).cpp
+	$(CXX) $(CPPFLAGS) $(INCLUDE) $(COMPILE_OPTIONS) -c $< -o $@
+
+clean:
+	rm -rf *.dSYM/
+	rm -f *.o
+	rm -f ../bin/$(TARGET)
+
+
