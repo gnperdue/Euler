@@ -23,7 +23,7 @@ int main(int argc, const char *argv[])
   std::cout << "topRightToBottomLeft = " << topRightToBottomLeft << std::endl;
   unsigned diagSum = topLeftToBottomRight + topRightToBottomLeft - 1;
   std::cout << "diagonal sum = " << diagSum << std::endl;
-  
+
   return 0;
 }
 
