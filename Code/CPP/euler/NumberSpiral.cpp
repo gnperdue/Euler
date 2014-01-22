@@ -20,31 +20,31 @@ void NumberSpiral::calculate()
 		unsigned step = ring - 1;
 		unsigned val  = ring * ring;
 		topRightToBottomLeft.push_back( val );
-		val -= step;
-		topLeftToBottomRight.push_back( val );
-		val -= step;
-		topRightToBottomLeft.push_back( val );
-		val -= step;
-		topLeftToBottomRight.push_back( val );
-	}
-	topLeftToBottomRight.push_back(1);
-	topRightToBottomLeft.push_back(1);
+    val -= step;
+    topLeftToBottomRight.push_back( val );
+    val -= step;
+    topRightToBottomLeft.push_back( val );
+    val -= step;
+    topLeftToBottomRight.push_back( val );
+  }
+  topLeftToBottomRight.push_back(1);
+  topRightToBottomLeft.push_back(1);
 }
 
 unsigned NumberSpiral::getTopLeftToBottomRightSum() const
 {
-	return getVectorSum(topLeftToBottomRight);
+  return getVectorSum(topLeftToBottomRight);
 }
 unsigned NumberSpiral::getTopRightToBottomLeftSum() const
 {
-	return getVectorSum(topRightToBottomLeft);
+  return getVectorSum(topRightToBottomLeft);
 }
 unsigned NumberSpiral::getVectorSum(const std::vector<unsigned>& v) const
 {
-	unsigned sum = 0;
-	for (auto n : v) {
-		sum += n;
-	}
-	return sum;
+  unsigned sum = 0;
+  for (auto n : v) {
+    sum += n;
+  }
+  return sum;
 }
 

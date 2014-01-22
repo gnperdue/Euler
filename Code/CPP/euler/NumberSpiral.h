@@ -17,10 +17,10 @@ class NumberSpiral {
     NumberSpiral& operator=(const NumberSpiral&) = delete;
     NumberSpiral(const NumberSpiral&) = delete;
 
-		void     calculate();
-		unsigned getTopLeftToBottomRightSum() const;
-		unsigned getTopRightToBottomLeftSum() const;
-		unsigned getVectorSum(const std::vector<unsigned>& v) const;
+    void     calculate();
+    unsigned getTopLeftToBottomRightSum() const;
+    unsigned getTopRightToBottomLeftSum() const;
+    unsigned getVectorSum(const std::vector<unsigned>& v) const;
 };
 
 
