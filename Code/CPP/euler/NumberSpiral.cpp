@@ -9,17 +9,17 @@ NumberSpiral::NumberSpiral() :
 NumberSpiral::NumberSpiral(unsigned init) : 
   width(init)
 {
-	if (width % 2 != 1) {
-		std::cerr << "Width must be odd! Adding one." << std::endl;
-	}
+  if (width % 2 != 1) {
+    std::cerr << "Width must be odd! Adding one." << std::endl;
+  }
 }
 
 void NumberSpiral::calculate() 
 {
-	for (unsigned ring = width; ring > 1; ring -= 2) {
-		unsigned step = ring - 1;
-		unsigned val  = ring * ring;
-		topRightToBottomLeft.push_back( val );
+  for (unsigned ring = width; ring > 1; ring -= 2) {
+    unsigned step = ring - 1;
+    unsigned val  = ring * ring;
+    topRightToBottomLeft.push_back( val );
     val -= step;
     topLeftToBottomRight.push_back( val );
     val -= step;
