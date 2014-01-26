@@ -1,5 +1,7 @@
 TARGET=euler_tests
 
+COMPILE_OPTIONS = -DVERBOSE_PRINT
+
 EULERLIBDIR=$(shell sh -c 'cd ../lib; pwd')
 EULERINCDIR=$(shell sh -c 'cd ../euler; pwd')
 
