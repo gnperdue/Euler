@@ -8,5 +8,6 @@ and libraries:
 * OpenMP
 * MPI
 * The Scientific Python Stack
+* The Haskell Platform or ghc and cabal
 
 Some of it will build and run on Scientific Linux Fermi as well.
