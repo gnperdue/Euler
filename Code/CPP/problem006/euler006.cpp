@@ -17,8 +17,8 @@ int square_of_sum(int max) {
   int sum {0};
   tbb::parallel_for(
 			static_cast<int>(1), max+1,
-      [&](int i){
-      sum += i;
+      [&](int j){
+      sum += j;
       }
       );
   return sum * sum;
