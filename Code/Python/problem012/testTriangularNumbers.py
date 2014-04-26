@@ -20,6 +20,20 @@ def tests():
     assert tnum == 21
     assert ntfac == 4
 
+    findval = 76576500
+    triangn = 10
+    tn.set(triangn)
+    while tn.get() != findval:
+        triangn += 1
+        tn.set(triangn)
+        if triangn % 1000 == 0:
+            print triangn, tn.get()
+
+    print "Found the triangular index at %d" % (triangn)
+
+    triangn = 12375
+    tn.set(triangn)
+    print tn.get(), tn.nfactors()
 
 if __name__ == '__main__':
     tests()
