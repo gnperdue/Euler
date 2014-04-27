@@ -1,24 +1,60 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Project Euler Problem 1</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
-      function euler001() {
-        var sum = 0;
-        for (var i = 3; i < 1001; i ++) {
-          if ( (i % 3 == 0) || (i % 5 == 0) ) {
-            sum += i;
-          }
-        }
-        var answer = document.getElementById("euleranswer");
-        answer.innerHTML = sum;
-      }
-      window.onload = euler001;
+
+function euler001() {
+  var sum = 0;
+  var data_raw = [];
+  var data_cum = [];
+  for (var i = 3; i < 1001; i ++) {
+    if ( (i % 3 == 0) || (i % 5 == 0) ) {
+      sum += i;
+      data_raw.push(i);
+      data_cum.push(sum);
+    }
+  }
+  var answer = document.getElementById("euleranswer");
+  answer.innerHTML = sum;
+
+  var w = data_cum.length;
+  var h = w;
+  var svg = d3.select("body").append("svg");
+  svg.attr({width: w, height: h});
+
+  var color_scale = d3.scale.linear();
+  color_scale.domain([data_cum[0], data_cum[data_cum.length - 1]]);
+  color_scale.range([0, 255]);
+
+  var length_scale = d3.scale.linear();
+  length_scale.domain([data_cum[0], data_cum[data_cum.length - 1]]);
+  length_scale.range([0, w]);
+
+  for (var i = 0; i < data_cum.length; i++) {
+    console.log( length_scale(data_cum[i]) );
+  }
+
+  svg.selectAll("rect").data(data_cum).enter().append("rect")
+    .attr("x", 0) 
+    .attr("y", function(d, i) {return i;})
+    .attr("height", 1)
+    .attr("width", function(d) {return length_scale(d);})
+    .attr("fill", function(d) {
+        return "rgb(0, 0, " + Math.floor(color_scale(d)) + ")";
+        });
+}
+window.onload = euler001;
+
     </script>
   </head>
+
   <body>
     <p>This is problem 1. The answer is: </p>
     <p id="euleranswer"></p>
   </body>
+
 </html>
