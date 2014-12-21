@@ -7,7 +7,7 @@ CPPFLAGS += -std=c++11 -stdlib=libc++
 LDFLAGS   = -stdlib=libc++
 LDLIBS    = -L$(EULERLIBDIR) -leuler
 INCLUDE   = -I$(EULERINCDIR)
-CXX = c++
+CXX = clang++
 
 all: euler001a euler001b euler001c mover
 
