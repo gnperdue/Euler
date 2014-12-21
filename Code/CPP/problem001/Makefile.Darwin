@@ -3,7 +3,7 @@ EULERLIBDIR=$(shell sh -c 'cd ../lib; pwd')
 EULERINCDIR=$(shell sh -c 'cd ../euler; pwd')
 
 CPPFLAGS  = -O3 -Wall -Werror -fPIC
-CPPFLAGS += -std=c++0x -stdlib=libc++
+CPPFLAGS += -std=c++11 -stdlib=libc++
 LDFLAGS   = -stdlib=libc++
 LDLIBS    = -L$(EULERLIBDIR) -leuler
 INCLUDE   = -I$(EULERINCDIR)
