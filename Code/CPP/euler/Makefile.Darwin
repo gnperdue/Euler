@@ -6,7 +6,7 @@ CPPFLAGS  = -O3                 # all warning-free optimizations
 
 CPPFLAGS += -Werror -Wall -fPIC 
 # CPPFLAGS += -DGIT_VERSION=\"$(GIT_VERSION)\"
-CPPFLAGS += -std=c++0x -stdlib=libc++
+CPPFLAGS += -std=c++1y -stdlib=libc++
 
 COMPILE_OPTIONS += 
 INCLUDE += 
