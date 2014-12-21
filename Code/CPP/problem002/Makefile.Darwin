@@ -6,7 +6,7 @@ EULERINCDIR=$(shell sh -c 'cd ../euler; pwd')
 CPPFLAGS  = -O0 -Wall
 CPPFLAGS += -Werror
 CPPFLAGS += -g -fPIC
-CPPFLAGS += -std=c++0x -stdlib=libc++
+CPPFLAGS += -std=c++1y -stdlib=libc++
 LDFLAGS   = -stdlib=libc++
 LDLIBS    = -L$(EULERLIBDIR) -leuler
 INCLUDE   = -I$(EULERINCDIR)
