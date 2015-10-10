@@ -10,7 +10,7 @@ def is_palindromic(num):
 def euler004():
     max_palindrome = 0
     for n1 in range(900, 1000):
-        for n2 in range(900, 1000):
+        for n2 in range(n1, 1000):
             n = n1 * n2
             if is_palindromic(n):
                 if n > max_palindrome:
