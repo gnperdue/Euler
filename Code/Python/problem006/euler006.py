@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import numpy as np
 
 
@@ -17,4 +18,4 @@ def euler(max):
 
 
 if __name__ == '__main__':
-    print "The answer is %d" % euler(100)
+    print("The answer is %d" % euler(100))

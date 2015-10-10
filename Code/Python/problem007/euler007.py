@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import math
 
 
 def check_prime(number):
     sqrt_num = math.sqrt(number)
     float_num = float(number)
-    for i in xrange(2, int(sqrt_num) + 1):
+    for i in range(2, int(sqrt_num) + 1):
         if (float_num / i).is_integer():
             return False
     return True
@@ -27,4 +27,4 @@ def get_nth_prime(n):
 
 
 if __name__ == '__main__':
-    print "The answer is %d" % get_nth_prime(10001)
+    print("The answer is %d" % get_nth_prime(10001))
