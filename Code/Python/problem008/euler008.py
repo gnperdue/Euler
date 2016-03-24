@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import print_function
+from six.moves import range
 
 
 def get_product(list_of_stringnumbers):
@@ -21,4 +23,4 @@ for i in range(len(nums)):
     if prod > largest_prod:
         largest_prod = prod
 
-print "The largest product is %d\n" % largest_prod
+print("The largest product is {}".format(largest_prod))
