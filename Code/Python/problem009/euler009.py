@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+from __future__ import print_function
 import pythagTriple
 
 
@@ -11,11 +11,11 @@ def euler():
                 if (i + j + k == 1000):
                     p = pythagTriple.PythagTriple(i, j, k)
                     if p.isPythagorean():
-                        print "Magic Triple: %d, %d, %d" % (i, j, k)
+                        print("Magic Triple: %d, %d, %d" % (i, j, k))
                         retvals.append(i * j * k)
     return retvals
 
 if __name__ == '__main__':
     tripleProducts = euler()
     for i in tripleProducts:
-        print "Triple product = %d" % i
+        print("Triple product = %d" % i)
