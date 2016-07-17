@@ -9,16 +9,15 @@ class Fibonacci {
     std::vector<unsigned long int> fiboNums;
 
   public:
-    Fibonacci(unsigned long int initialLength);
+    explicit Fibonacci(uint64_t initialLength);
     ~Fibonacci() {}
 
     Fibonacci& operator=(const Fibonacci&) = delete;
     Fibonacci(const Fibonacci&);
 
-    unsigned long int operator[](unsigned int i) const;
+    uint64_t operator[](uint64_t i) const;
     unsigned int size() const;
     void addFiboNumber();
-
 };
 
 #endif

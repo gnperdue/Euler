@@ -1,8 +1,8 @@
 #include "Fibonacci.h"
 
-Fibonacci::Fibonacci(unsigned long int initialLength)
+Fibonacci::Fibonacci(uint64_t initialLength)
 {
-  for (unsigned long int index = 0; index < initialLength; ++index) {
+  for (uint64_t index = 0; index < initialLength; ++index) {
     this->addFiboNumber();
   }
 }
@@ -33,7 +33,7 @@ unsigned int Fibonacci::size() const
   return fiboNums.size();
 }
 
-unsigned long int Fibonacci::operator[](unsigned int i) const
+uint64_t Fibonacci::operator[](uint64_t i) const
 {
   return fiboNums[i];
 }
