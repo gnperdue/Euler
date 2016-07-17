@@ -1,26 +1,25 @@
-#include <iostream>
-#include "Fibonacci.h"
+#include <iostream>        // NOLINT(readability/streams)
+#include "Fibonacci.h"     // NOLINT(build/include)
 
-const unsigned long int trialSize = 4000000L;
+const uint64_t trialSize = 4000000L;
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
   Fibonacci fibonacci(1L);
 
   unsigned int index = 0;
-  unsigned long int val = fibonacci[index];
+  uint64_t val = fibonacci[index];
   while ( val < trialSize ) {
     fibonacci.addFiboNumber();
     index++;
     val = fibonacci[index];
-  } 
+  }
 
-  std::vector<unsigned long int> vals;
-  unsigned long int sum = 0L;
+  std::vector<uint64_t> vals;
+  uint64_t sum = 0L;
   for (auto i = 0; i < fibonacci.size(); ++i) {
-    unsigned long int val = fibonacci[i];
+    uint64_t val = fibonacci[i];
     if ( (0 == val % 2) && (val < trialSize) ) {
-      vals.push_back( val );
+      vals.push_back(val);
       sum += val;
     }
   }
