@@ -13,7 +13,7 @@ class Collatz {
 
   public:
     Collatz();
-    Collatz(unsigned long initialValue);
+    explicit Collatz(unsigned long initialValue);
     ~Collatz() {}
     Collatz& operator=(const Collatz&) = delete;
     Collatz(const Collatz&) = delete;

@@ -1,19 +1,18 @@
-#include <iostream>
+#include <iostream>           // NOLINT(readability/streams)
 #include <cmath>
-#include "PrimeNumbers.h"
+#include "PrimeNumbers.h"     // NOLINT(build/include)
 
-const unsigned long number = 600851475143L;
+const uint64_t number = 600851475143L;
 
-int main(int argc, char * argv[]) 
-{
-  unsigned long startingPoint = ceil( sqrt(number) );
+int main(int argc, char * argv[]) {
+  uint64_t startingPoint = ceil(sqrt(number));
 
   PrimeNumbers calculator;
-  startingPoint = calculator.nextPrime( startingPoint );
+  startingPoint = calculator.nextPrime(startingPoint);
   std::cout << "Investigating : " << number << std::endl;
   std::cout << "Starting Point: " << startingPoint << std::endl;
 
-  unsigned long value = startingPoint;
+  uint64_t value = startingPoint;
 
   while (value > 0) {
     if ( calculator.isPrime(value) && (0 == number % value) ) {

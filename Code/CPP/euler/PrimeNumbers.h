@@ -1,25 +1,24 @@
-#ifndef PrimeNumbers_h
-#define PrimeNumbers_h
+#ifndef CODE_CPP_EULER_PRIMENUMBERS_H_
+#define CODE_CPP_EULER_PRIMENUMBERS_H_
 
 #include <vector>
 
 class PrimeNumbers {
 
-  private:
-    std::vector<unsigned long> primeNumbers;
+  private:      // NOLINT(whitespace/indent)
+    std::vector<uint64_t> primeNumbers;
 
-  public:
+  public:      // NOLINT(whitespace/indent)
     PrimeNumbers() { primeNumbers.push_back(1L); }
     ~PrimeNumbers() {}
 
-    unsigned long int operator[](unsigned int i) const;
+    uint64_t operator[](uint64_t i) const;
     unsigned int size() const;
     void addPrimeNumber();
 
-    bool isPrime(unsigned long num) const;
-    unsigned long nextPrime(unsigned long val) const;
-
+    bool isPrime(uint64_t num) const;
+    uint64_t nextPrime(uint64_t val) const;
 };
 
-#endif
+#endif  // CODE_CPP_EULER_PRIMENUMBERS_H_
 

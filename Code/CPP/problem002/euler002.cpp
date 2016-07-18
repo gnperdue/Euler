@@ -14,7 +14,7 @@ int main(int argc, char * argv[]) {
     val = fibonacci[index];
   }
 
-  std::vector<uint64_t> vals;
+  std::vector<uint64_t> vals;   // NOLINT(build/include_what_you_use)
   uint64_t sum = 0L;
   for (auto i = 0; i < fibonacci.size(); ++i) {
     uint64_t val = fibonacci[i];
