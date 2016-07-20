@@ -1,15 +1,14 @@
-#ifndef Palindromic_h
-#define Palindromic_h
+#ifndef CODE_CPP_EULER_PALINDROMIC_H_
+#define CODE_CPP_EULER_PALINDROMIC_H_
 
 #include <vector>
 
 class Palindromic {
 
-  private:
+  private:    // NOLINT(whitespace/indent)
     int value;
-    void init(int theValue);
 
-  public:
+  public:     // NOLINT(whitespace/indent)
     explicit Palindromic();
     explicit Palindromic(int theValue);
     ~Palindromic() {}
@@ -23,4 +22,4 @@ class Palindromic {
     void setValue(int theValue);
 };
 
-#endif
+#endif  // CODE_CPP_EULER_PALINDROMIC_H_

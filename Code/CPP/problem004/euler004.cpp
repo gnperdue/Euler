@@ -1,8 +1,7 @@
-#include <iostream>
-#include "Palindromic.h"
+#include <iostream>       // NOLINT(readability/streams)
+#include "Palindromic.h"  // NOLINT(build/include)
 
-int main(int argc, char * argv[]) 
-{
+int main(int argc, char * argv[])  {
   Palindromic pp;
 
   int largestPalindrome = 0;
@@ -11,9 +10,9 @@ int main(int argc, char * argv[])
       int candidate = i * j;
       pp.setValue(candidate);
       if (pp.isPalindromic()) {
-        if (candidate > largestPalindrome) 
+        if (candidate > largestPalindrome)
           largestPalindrome = candidate;
-      } 
+      }
     }
   }
 
