@@ -19,7 +19,7 @@ fr.close()
 
 largest_prod = 1
 for i in range(len(nums)):
-    prod = get_product(nums[i:i + 5])
+    prod = get_product(nums[i:i + 13])
     if prod > largest_prod:
         largest_prod = prod
 
