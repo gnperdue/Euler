@@ -1,7 +1,6 @@
-#include <iostream>
+#include <iostream>  // NOLINT(readability/streams)
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
 
   return 0;
 }
