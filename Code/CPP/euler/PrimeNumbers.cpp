@@ -1,6 +1,7 @@
 #include "PrimeNumbers.h"    // NOLINT(build/include)
 
 //----------------
+// add the next occuring prime to storage
 void PrimeNumbers::addPrimeNumber() {
   if (!primeNumbers.size()) {
     primeNumbers.push_back(1L);
@@ -13,6 +14,7 @@ void PrimeNumbers::addPrimeNumber() {
 
 
 //----------------
+// brute force, inelegant prime number checker
 bool PrimeNumbers::isPrime(uint64_t num) const {
   if (1L == num) return true;
   if (2L == num) return true;
@@ -29,6 +31,7 @@ bool PrimeNumbers::isPrime(uint64_t num) const {
 
 
 //----------------
+// compute the next prime number that occurs after the given value
 uint64_t PrimeNumbers::nextPrime(uint64_t val) const {
   uint64_t next = val + 1L;
   while ( !isPrime(next) ) ++next;
@@ -37,12 +40,14 @@ uint64_t PrimeNumbers::nextPrime(uint64_t val) const {
 
 
 //----------------
+// get the number of stored computed primes
 unsigned PrimeNumbers::size() const {
   return primeNumbers.size();
 }
 
 
 //----------------
+// get a prime from storage by index
 uint64_t PrimeNumbers::operator[](uint64_t i) const {
   return primeNumbers[i];
 }
