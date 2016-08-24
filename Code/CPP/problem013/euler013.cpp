@@ -1,12 +1,11 @@
 #include <iostream>     // NOLINT(readability/streams)
 #include <fstream>      // NOLINT(readability/streams)
-#include <sstream>
 #include <string>
 #include <vector>
 
 int main(int argc, char * argv[]) {
 
-  std::string file_name = "numbers_short13.txt";
+  std::string file_name = "numbers13.txt";
   // numbers.txt is like:
   // 12345
   // 67890
@@ -27,11 +26,12 @@ int main(int argc, char * argv[]) {
     }
 		uint64_t the_num = 0;
     uint64_t mult_factor = 1;
-    for (auto i = linevals.rbegin(); i != linevals.rend(); ++i) {
-      std::cout << (*i) << std::endl;
-      the_num += mult_factor * (*i);
+    // get the first 11 numbers to build the sum? - same as 12, 13
+    int idx = 11;
+    while (idx >= 0) {
+      the_num += mult_factor * linevals[idx];
+      idx--;
       mult_factor *= 10;
-      std::cout << the_num << std::endl;
     }
     numbers.push_back(the_num);
   }
@@ -43,9 +43,13 @@ int main(int argc, char * argv[]) {
   }
 
   std::cout << "grand sum = " << grand_sum << std::endl;
-  // get the 10 most significant digits
-  std::cout << "first ten = "
-    << grand_sum - (grand_sum % 10000000000) << std::endl;
+  std::string numstr = std::to_string(grand_sum);
+  int idx = 0;
+  for (auto c : numstr) {
+    std::cout << c;
+    if (++idx > 9) break;
+  }
+  std::cout << std::endl;
 
   return 0;
 }
