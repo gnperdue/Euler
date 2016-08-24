@@ -1,20 +1,16 @@
 #include <sstream>
-#include "TriangularNumber.h"
+#include "TriangularNumber.h"   // NOLINT(build/include)
 
-TriangularNumber::TriangularNumber() : 
-  initialValue(1L), triangularNumber(1L)
-{
-}
+TriangularNumber::TriangularNumber() :
+  initialValue(1L), triangularNumber(1L) {}
 
-TriangularNumber::TriangularNumber(unsigned long init) : 
-  initialValue(init), triangularNumber(1L)
-{
+TriangularNumber::TriangularNumber(uint64_t init) :
+  initialValue(init), triangularNumber(1L) {
   calcTriangle();
 }
 
-void TriangularNumber::calcTriangle() 
-{
-  unsigned long value = initialValue;
+void TriangularNumber::calcTriangle() {
+  uint64_t value = initialValue;
   triangularNumber = 0L;
   while (value != 0L) {
     triangularNumber += value;
@@ -22,23 +18,20 @@ void TriangularNumber::calcTriangle()
   }
 }
 
-void TriangularNumber::set(unsigned long index)
-{
+void TriangularNumber::set(uint64_t index) {
   initialValue = index;
   calcTriangle();
 }
 
-unsigned long TriangularNumber::get() const
-{
+uint64_t TriangularNumber::get() const {
   return triangularNumber;
 }
 
-std::vector<unsigned long> TriangularNumber::factors() const
-{
-  std::vector<unsigned long> factors {1L};
-  unsigned long fact = 2L;
+std::vector<uint64_t> TriangularNumber::factors() const {
+  std::vector<uint64_t> factors {1L};  // NOLINT(build/include_what_you_use)
+  uint64_t fact = 2L;
   while (fact <= triangularNumber) {
-    if ( triangularNumber % fact == 0 ) 
+    if (triangularNumber % fact == 0)
       factors.push_back(fact);
     fact++;
   }

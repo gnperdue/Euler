@@ -1,25 +1,25 @@
-#ifndef TriangularNumber_h
-#define TriangularNumber_h
+#ifndef CODE_CPP_EULER_TRIANGULARNUMBER_H_
+#define CODE_CPP_EULER_TRIANGULARNUMBER_H_
 
 #include <vector>
 
 class TriangularNumber {
 
-  private:
-    unsigned long initialValue;
-    unsigned long triangularNumber;
+  private:  // NOLINT(whitespace/indent)
+    uint64_t initialValue;
+    uint64_t triangularNumber;
     void calcTriangle();
 
-  public:
+  public:  // NOLINT(whitespace/indent)
     TriangularNumber();
-    TriangularNumber(unsigned long initialValue);
+    explicit TriangularNumber(uint64_t initialValue);
     ~TriangularNumber() {}
     TriangularNumber& operator=(const TriangularNumber&) = delete;
     TriangularNumber(const TriangularNumber&) = delete;
 
-    void set(unsigned long index);
-    unsigned long get() const;
-    std::vector<unsigned long> factors() const;
+    void set(uint64_t index);
+    uint64_t get() const;
+    std::vector<uint64_t> factors() const;
 };
 
-#endif
+#endif  // CODE_CPP_EULER_TRIANGULARNUMBER_H_
