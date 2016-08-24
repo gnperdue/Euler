@@ -6,7 +6,7 @@
 
 int main(int argc, char * argv[]) {
 
-  std::string file_name = "numbers.txt";
+  std::string file_name = "numbers_short13.txt";
   // numbers.txt is like:
   // 12345
   // 67890
@@ -25,16 +25,14 @@ int main(int argc, char * argv[]) {
       // cast each char as an int, subtract 48 to get proper value
       linevals.push_back(static_cast<uint64_t>(c) - 48);
     }
-    // only care about the 10 lest significant digits
-		uint64_t len = linevals.size() - 1;
-		uint64_t idx = len;
 		uint64_t the_num = 0;
-		uint64_t mult_factor = 1;
-		while (len - idx < 10) {
-			the_num += mult_factor * linevals[idx];
-			mult_factor *= 10;
-			idx -= 1;
-		}
+    uint64_t mult_factor = 1;
+    for (auto i = linevals.rbegin(); i != linevals.rend(); ++i) {
+      std::cout << (*i) << std::endl;
+      the_num += mult_factor * (*i);
+      mult_factor *= 10;
+      std::cout << the_num << std::endl;
+    }
     numbers.push_back(the_num);
   }
 
@@ -45,8 +43,9 @@ int main(int argc, char * argv[]) {
   }
 
   std::cout << "grand sum = " << grand_sum << std::endl;
-  // get the 10 lest significant digits
-  std::cout << "first ten = " << grand_sum % 10000000000 << std::endl;
+  // get the 10 most significant digits
+  std::cout << "first ten = "
+    << grand_sum - (grand_sum % 10000000000) << std::endl;
 
   return 0;
 }
