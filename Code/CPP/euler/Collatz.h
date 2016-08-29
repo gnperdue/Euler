@@ -1,28 +1,28 @@
-#ifndef Collatz_h
-#define Collatz_h
+#ifndef CODE_CPP_EULER_COLLATZ_H_
+#define CODE_CPP_EULER_COLLATZ_H_
 
 #include <string>
 #include <vector>
 
 class Collatz {
 
-  private:
-    std::vector<unsigned long> collatzNums;
+  private:  // NOLINT(whitespace/indent)
+    std::vector<uint64_t> collatzNums;
     void buildSequence();
-    unsigned long initialValue;
+    uint64_t initialValue;
 
-  public:
+  public:  // NOLINT(whitespace/indent)
     Collatz();
-    explicit Collatz(unsigned long initialValue);
+    explicit Collatz(uint64_t initialValue);
     ~Collatz() {}
     Collatz& operator=(const Collatz&) = delete;
     Collatz(const Collatz&) = delete;
 
-    unsigned long operator[](unsigned int i) const;
+    uint64_t operator[](unsigned int i) const;
     unsigned int size() const;
-    const std::vector<unsigned long> *fullSequence() const;
-    void reset(unsigned long value);
+    const std::vector<uint64_t> *fullSequence() const;
+    void reset(uint64_t value);
     std::string toString() const;
 };
 
-#endif
+#endif  // CODE_CPP_EULER_COLLATZ_H_
