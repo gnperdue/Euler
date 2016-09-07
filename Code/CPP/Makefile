@@ -6,7 +6,6 @@ all:
 	make -C problem003
 	make -C problem004
 	make -C problem005
-	make -C problem006
 	make -C problem008
 	make -C problem009
 	make -C problem010
@@ -22,7 +21,6 @@ clean:
 	make clean -C problem003
 	make clean -C problem004
 	make clean -C problem005
-	make clean -C problem006
 	make clean -C problem008
 	make clean -C problem009
 	make clean -C problem010

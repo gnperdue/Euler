@@ -1,60 +1,52 @@
-#include "DigitSums.h"
+#include "DigitSums.h"   // NOLINT(build/include)
 
 DigitSums::DigitSums() :
-  number(0)
-{
+  number(0) {
   digits.push_back(0);
 }
 
-DigitSums::DigitSums(unsigned num) :
-  number(num)
-{
+DigitSums::DigitSums(uint64_t num) :
+  number(num) {
   digits = calcDigitsForNumber(num);
 }
 
-std::vector<unsigned> DigitSums::calcDigitsForNumber(unsigned num) const
-{
-  std::vector<unsigned> v;
+std::vector<uint64_t> DigitSums::calcDigitsForNumber(uint64_t num) const {
+  std::vector<uint64_t> v;
   if (0 == num) {
     v.push_back(0);
     return v;
   }
   while (num > 0) {
     auto it = v.begin();
-    unsigned dig = num % 10;
-    v.insert(it,dig);
+    uint64_t dig = num % 10;
+    v.insert(it, dig);
     num = num / 10;
   }
   return v;
 }
 
-void DigitSums::setNumber(unsigned num) 
-{
+void DigitSums::setNumber(uint64_t num) {
   number = num;
   digits = calcDigitsForNumber(num);
 }
 
-unsigned DigitSums::getNumber() const
-{
+uint64_t DigitSums::getNumber() const {
   return number;
 }
 
-std::vector<unsigned> DigitSums::getDigits() const
-{
+std::vector<uint64_t> DigitSums::getDigits() const {
   return digits;
 }
 
-unsigned DigitSums::getDigitSum() const
-{
+uint64_t DigitSums::getDigitSum() const {
   return getDigitsToPowerSum(1);
 }
 
-unsigned DigitSums::getDigitsToPowerSum(unsigned power) const
-{
-  unsigned sum = 0;
+uint64_t DigitSums::getDigitsToPowerSum(uint64_t power) const {
+  uint64_t sum = 0;
   for (auto i : digits) {
-    unsigned term = 1;
-    unsigned p    = power;
+    uint64_t term = 1;
+    uint64_t p    = power;
     while (p > 0) {
       term *= i;
       --p;
@@ -62,8 +54,4 @@ unsigned DigitSums::getDigitsToPowerSum(unsigned power) const
     sum += term;
   }
   return sum;
-
 }
-
-
-
