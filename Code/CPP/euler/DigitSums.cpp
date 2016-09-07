@@ -10,6 +10,14 @@ DigitSums::DigitSums(uint64_t num) :
   digits = calcDigitsForNumber(num);
 }
 
+std::vector<uint64_t> DigitSums::calcDigitsForNumber(std::string& num) const {
+  std::vector<uint64_t> v;
+  for (char c : num) {
+    v.push_back(static_cast<uint64_t>(c) - 48);
+  }
+  return v;
+}
+
 std::vector<uint64_t> DigitSums::calcDigitsForNumber(uint64_t num) const {
   std::vector<uint64_t> v;
   if (0 == num) {

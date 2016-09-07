@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <cstdint>
+#include <string>
 
 class DigitSums {
 
@@ -17,6 +18,7 @@ class DigitSums {
 
     void setNumber(uint64_t num);
     uint64_t getNumber() const;
+    std::vector<uint64_t> calcDigitsForNumber(std::string& num) const;
     std::vector<uint64_t> calcDigitsForNumber(uint64_t num) const;
     std::vector<uint64_t> getDigits() const;
     uint64_t getDigitSum() const;
