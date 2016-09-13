@@ -13,6 +13,7 @@ all:
 	make -C problem013
 	make -C problem014
 	make -C problem015
+	make -C problem017
 
 clean:
 	make clean -C euler
@@ -28,6 +29,7 @@ clean:
 	make clean -C problem013
 	make clean -C problem014
 	make clean -C problem015
+	make clean -C problem017
 
 remake:
 	make clean
