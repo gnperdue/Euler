@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-
+from __future__ import print_function
 import pandas as pd
+
 
 if __name__ == '__main__':
     count = 0
@@ -9,5 +10,5 @@ if __name__ == '__main__':
         if i.day == 1:
             count += 1
 
-    print "The number of months start on a Sunday in the 20th Century was:"
-    print count
+    print("The number of months start on a Sunday in the 20th Century was:")
+    print(count)
