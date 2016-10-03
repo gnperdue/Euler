@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+from __future__ import print_function
 from scipy.misc import factorial
 
 
@@ -8,4 +8,4 @@ euler = 0
 for c in s:
     euler += int(c)
 
-print euler
+print(euler)
