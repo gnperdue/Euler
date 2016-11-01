@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <set>
 
 class ProperDivisors {
 
@@ -16,6 +17,7 @@ class ProperDivisors {
 
     void set(uint64_t value);
     std::vector<uint64_t> divisors() const;
+    std::set<uint64_t> divisors_set() const;
     uint64_t sum_of_divisors() const;
 };
 
