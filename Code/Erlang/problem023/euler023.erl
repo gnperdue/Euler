@@ -1,14 +1,28 @@
 -module(euler023).
 -export([
-  euler/0
+  euler/0,
+  list_of_nums_without_abundant_sums/1,
+  have_at_least_one_abundant_sum/1,
+  is_abundant_num/1,
+  get_divisors/1,
+  print_list/1,
+  list_of_abundance_of_nums/1
   ]).
 
 euler() ->
   lists:sum( list_of_nums_without_abundant_sums(28123) ).
 
+print_list([]) -> [];
+print_list([H|T]) -> 
+  io:format("~p~n", [H]),
+  [H|print_list(T)].
+
 list_of_nums_without_abundant_sums(MaxCheck) ->
   [ X || X <- lists:seq(1,MaxCheck), 
          have_at_least_one_abundant_sum(X) == false ]. 
+
+list_of_abundance_of_nums(MaxCheck) ->
+  [ get_abundance_of_num(X) || X <- lists:seq(1,MaxCheck) ].
 
 have_at_least_one_abundant_sum(N) ->
   look_for_abundant_pair( get_list_of_sums(N) ).
@@ -30,6 +44,12 @@ is_abundant_pair({N1,N2}) ->
   case is_abundant_num(N1) of
     true  -> is_abundant_num(N2);
     false -> false
+  end.
+
+get_abundance_of_num(N1) ->
+  case is_abundant_num(N1) of
+    true  -> N1;
+    false -> 0.0
   end.
 
 is_perfect_num(N) -> get_d(N) == N.
