@@ -18,6 +18,7 @@ class ProperDivisors {
     void set(uint64_t value);
     std::vector<uint64_t> divisors() const;
     std::set<uint64_t> divisors_set() const;
+    std::set<uint64_t> divisors_set_alt() const;
     uint64_t sum_of_divisors() const;
 };
 
