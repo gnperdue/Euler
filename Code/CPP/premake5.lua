@@ -45,12 +45,44 @@ project "euler002"
     files {"euler002/euler002.cpp"}
 
 project "euler003"
-    location "build/euler002"
+    location "build/euler003"
     targetdir "bin/%{cfg.buildcfg}"
     includedirs {"eulerlib"}
     libdirs {"lib/%{cfg.buildcfg}"}
     links {"euler"}
-    files {"euler002/euler002.cpp"}
+    files {"euler003/euler003.cpp"}
+
+project "euler004"
+    location "build/euler004"
+    targetdir "bin/%{cfg.buildcfg}"
+    includedirs {"eulerlib"}
+    libdirs {"lib/%{cfg.buildcfg}"}
+    links {"euler"}
+    files {"euler004/euler004.cpp"}
+
+project "euler005"
+    location "build/euler005"
+    targetdir "bin/%{cfg.buildcfg}"
+    includedirs {"eulerlib"}
+    libdirs {"lib/%{cfg.buildcfg}"}
+    links {"euler"}
+    files {"euler005/euler005.cpp"}
+
+project "euler008"
+    location "build/euler008"
+    targetdir "bin/%{cfg.buildcfg}"
+    includedirs {"eulerlib"}
+    libdirs {"lib/%{cfg.buildcfg}"}
+    links {"euler"}
+    files {"euler008/euler008.cpp"}
+
+project "euler009"
+    location "build/euler009"
+    targetdir "bin/%{cfg.buildcfg}"
+    includedirs {"eulerlib"}
+    libdirs {"lib/%{cfg.buildcfg}"}
+    links {"euler"}
+    files {"euler009/euler009.cpp"}
 
 project "euler010"
     location "build/euler010"
