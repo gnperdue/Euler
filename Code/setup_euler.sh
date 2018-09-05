@@ -2,7 +2,7 @@
 
 ARCHIT=`uname`
 
-pushd $HOME/Dropbox/Programming/Euler/Premake_test2/CPP >& /dev/null
+pushd $HOME/Dropbox/Programming/Euler/Code/CPP >& /dev/null
 
 if [ $ARCHIT = 'Darwin' ]
 then
