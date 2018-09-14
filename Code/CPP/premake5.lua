@@ -107,3 +107,11 @@ project "euler013"
     libdirs {"lib/%{cfg.buildcfg}"}
     links {"euler"}
     files {"euler013/euler013.cpp"}
+
+project "euler014"
+    location "build/euler014"
+    targetdir "bin/%{cfg.buildcfg}"
+    includedirs {"eulerlib"}
+    libdirs {"lib/%{cfg.buildcfg}"}
+    links {"euler"}
+    files {"euler014/euler014.cpp"}
