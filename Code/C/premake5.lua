@@ -27,25 +27,34 @@ project "euler014_pthr"
     targetdir "bin/%{cfg.buildcfg}"
     files {"euler014/euler014_pthr.c"}
 
+-- For MPICH
 -- $ mpicc -compile_info
 -- clang -Wl,-flat_namespace -Wl,-commons,use_dylibs \
 --   -I/usr/local/Cellar/mpich/3.2.1_2/include \
 --   -L/usr/local/Cellar/mpich/3.2.1_2/lib \
 --   -lmpi -lpmpi
+-- ...
+-- For OpenMPI
+-- C$ mpicc --showme:compile
+-- -I/usr/local/Cellar/open-mpi/3.1.3/include
+-- C$ mpicc --showme:link
+-- -L/usr/local/opt/libevent/lib -L/usr/local/Cellar/open-mpi/3.1.3/lib -lmpi
 project "euler014_mpi"
     location "build/euler014_mpi"
     targetdir "bin/%{cfg.buildcfg}"
     files {"euler014/euler014_mpi.c"}
-    includedirs {"/usr/local/Cellar/mpich/3.2.1_2/include"}
-    libdirs {"/usr/local/Cellar/mpich/3.2.1_2/lib"}
+    includedirs {"/usr/local/Cellar/open-mpi/3.1.3/include"}
+    libdirs {
+        "/usr/local/opt/libevent/lib",
+        "/usr/local/Cellar/open-mpi/3.1.3/lib"
+    }
     links {
-        "mpi",
-        "pmpi"
+        "mpi"
     }
-    linkoptions {
-        "-Wl,-flat_namespace",
-        "-Wl,-commons,use_dylibs",
-    }
+--    linkoptions {
+--        "-Wl,-flat_namespace",
+--        "-Wl,-commons,use_dylibs",
+--    }
 
 project "euler024"
     location "build/euler024"
