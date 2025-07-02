@@ -1,0 +1,13 @@
+{
+  "python.defaultInterpreterPath": "python3",
+  "julia.executablePath": "/Users/perdue/.juliaup/bin/julia", // Use `which julia`
+  "code-runner.executorMap": {
+    "python": "python3",
+    "julia": "julia"
+  },
+  "code-runner.runInTerminal": true,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 4
+}
+
